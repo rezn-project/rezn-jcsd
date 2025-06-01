@@ -14,6 +14,7 @@ https://discuss.ocaml.org/t/canonical-json-with-yojson-for-signature-verificatio
 
 - Canonicalizes JSON via UNIX socket or CLI
 - Vendored Go implementation (Apache 2.0)
+- C++ implementation based on the Go implementation - suitable for FFI
 - Suitable for cryptographic signing pipelines
 - Minimal, auditable, production-ready
 
