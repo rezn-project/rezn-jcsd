@@ -1,0 +1,24 @@
+[Unit]
+Description=Rezn JCS canonicalizes JSON
+After=network.target
+
+[Service]
+Type=simple
+User=reznjcs
+Group=reznjcs
+WorkingDirectory=/opt/reznjcsd
+EnvironmentFile=/etc/reznjcsd/reznjcsd.env
+ExecStart=/opt/reznjcsd/reznjcsd
+StandardOutput=append:/var/log/reznjcsd/server.log
+StandardError=inherit
+Restart=always
+RestartSec=5
+LimitNOFILE=65536
+
+PrivateDevices=yes
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=multi-user.target

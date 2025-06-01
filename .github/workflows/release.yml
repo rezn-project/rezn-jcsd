@@ -1,0 +1,47 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build binary
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.24
+
+      - name: Build and create .deb package
+        run: |
+          make ARCH=amd64 RAW_VERSION=${{ github.ref_name }}
+          cp build/reznjcs-cli dist/
+          cp *.deb dist/
+
+      - name: Make binaries executable
+        run: chmod +x dist/reznjcs-cli
+
+      - name: Install packaging dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby ruby-dev build-essential libssl-dev
+          sudo gem install --no-document fpm
+
+      - name: Create tarball of binaries
+        run: tar -czvf dist/rezn-jcs_amd64.tar.gz -C dist reznjcs-cli
+
+      - name: Upload release artifacts
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.tar.gz
+            dist/*.deb
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
