@@ -4,6 +4,12 @@
 
 ---
 
+## Why?
+
+https://discuss.ocaml.org/t/canonical-json-with-yojson-for-signature-verification/16725/16
+
+---
+
 ## Features
 
 - Canonicalizes JSON via UNIX socket or CLI
