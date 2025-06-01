@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: true
 
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -22,8 +24,17 @@ jobs:
       - name: Install packaging dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ruby ruby-dev build-essential libssl-dev
+          sudo apt-get install -y ruby ruby-dev build-essential libssl-dev g++
           sudo gem install --no-document fpm
+
+      - name: Create dist directory
+        run: mkdir -p dist
+
+      - name: Build shared library
+        run: |
+          cd cpp
+          g++ -std=c++20 -O2 -fPIC -shared -Iexternal/json/single_include reznjcs.cpp -o libreznjcs_amd64.so
+          cp libreznjcs_amd64.so ../dist/
 
       - name: Build and create .deb package
         run: |
@@ -43,5 +54,6 @@ jobs:
           files: |
             dist/*.tar.gz
             dist/*.deb
+            dist/libreznjcs_amd64.so
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
