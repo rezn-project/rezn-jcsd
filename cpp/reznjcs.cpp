@@ -32,3 +32,8 @@ extern "C" const char *rezn_canonicalize(const char *json_utf8)
         return nullptr;
     }
 }
+
+extern "C" void rezn_free(char *ptr)
+{
+    free(ptr);
+}

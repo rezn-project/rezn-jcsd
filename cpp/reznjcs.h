@@ -7,6 +7,8 @@ extern "C"
     // Caller must free() the result.
     const char *rezn_canonicalize(const char *json_utf8);
 
+    void rezn_free(char *ptr);
+
 #ifdef __cplusplus
 }
 #endif
