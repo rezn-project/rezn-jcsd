@@ -45,6 +45,14 @@ Example for linking from C:
 
 ```c
 extern const char* rezn_canonicalize(const char* input_json);
+
+// Usage example:
+const char* result = rezn_canonicalize(input_json);
+if (result != NULL) {
+    // Use the result...
+    printf("%s\n", result);
+    free((void*)result);  // Important: free the allocated memory
+}
 ```
 
 Compile with:
