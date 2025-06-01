@@ -44,7 +44,7 @@ Returns:
 ### CLI mode
 
 ```bash
-cat input.json | jcs-go > canonical.json
+cat input.json | reznjcs-cli > canonical.json
 ```
 
 ---
@@ -58,7 +58,7 @@ cat input.json | jcs-go > canonical.json
 ## Building
 
 ```bash
-go build -o jcs-go ./cmd/jcs-go
+go build -o reznjcs-cli ./cmd/cli
 go build -o jcsd ./cmd/jcsd
 ```
 

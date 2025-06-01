@@ -16,9 +16,9 @@ if ! id -u "$USER" >/dev/null 2>&1; then
   useradd --system --no-create-home --shell /usr/sbin/nologin --gid "$GROUP" "$USER"
 fi
 
-mkdir -p /etc/rezndsld
-chown "$USER:$GROUP" /etc/rezndsld
-chmod 700 /etc/rezndsld
+mkdir -p /etc/reznjcsd
+chown "$USER:$GROUP" /etc/reznjcsd
+chmod 700 /etc/reznjcsd
 
 echo "Installing default environment template at $DEFAULT_ENV_FILE"
 chown "$USER:$GROUP" "$DEFAULT_ENV_FILE"
