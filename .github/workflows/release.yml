@@ -29,7 +29,10 @@ jobs:
         run: chmod +x dist/reznjcs-cli
 
       - name: Install packaging dependencies
-        run: sudo apt-get install -y ruby ruby-dev build-essential libssl-dev && sudo gem install --no-document fpm
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby ruby-dev build-essential libssl-dev
+          sudo gem install --no-document fpm
 
       - name: Create tarball of binaries
         run: tar -czvf dist/rezn-jcs_amd64.tar.gz -C dist reznjcs-cli
