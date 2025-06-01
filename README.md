@@ -64,6 +64,12 @@ go build -o jcsd ./cmd/jcsd
 
 ---
 
+## C++ implementation
+
+See the corresponding [readme](./cpp/README.md)
+
+---
+
 ## License
 
 * `rezn-jcsd` is licensed under **MIT**
