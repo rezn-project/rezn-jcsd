@@ -3,7 +3,7 @@ APP_NAME_DAEMON=reznjcsd
 APP_NAME_CLI=reznjcs-cli
 VERSION?=$(subst -,~, $(subst v,,$(RAW_VERSION)))
 ARCH?=amd64
-BUILD_DIR=_build
+BUILD_DIR=build
 STAGING_DIR=dist/deb/$(APP_NAME)
 DEB_NAME=$(APP_NAME)_$(VERSION)_$(ARCH).deb
 CLI_BUILD_DIR=cli
@@ -22,9 +22,9 @@ build-cli:
 
 stage:
 	rm -rf $(STAGING_DIR)
-	mkdir -p $(STAGING_DIR)/opt/$(APP_NAME)/bin
 	mkdir -p $(STAGING_DIR)/opt/$(APP_NAME_CLI)/bin
-	mkdir -p $(STAGING_DIR)/etc/$(APP_NAME)
+	mkdir -p $(STAGING_DIR)/opt/$(APP_NAME_DAEMON)/bin
+	mkdir -p $(STAGING_DIR)/etc/$(APP_NAME_DAEMON)
 	mkdir -p $(STAGING_DIR)/lib/systemd/system
 	mkdir -p $(STAGING_DIR)/etc/logrotate.d
 
