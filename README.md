@@ -26,7 +26,7 @@ REZN_JCSD_SOCKET=/tmp/jcsd.sock ./jcsd
 Hit it with some JSON
 
 ```bash
-echo '{"op":"canon","source":"{ \"b\":2, \"a\":1 }"}' | socat - UNIX-CONNECT:/run/rezn-jcsd/jcs.sock
+echo '{"op":"canon","source":"{ \"b\":2, \"a\":1 }"}' | socat - UNIX-CONNECT:/tmp/jcsd.sock
 ````
 
 Returns:

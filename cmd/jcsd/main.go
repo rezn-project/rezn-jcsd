@@ -72,6 +72,7 @@ func main() {
 	for {
 		conn, err := ln.Accept()
 		if err != nil {
+			fmt.Fprintf(os.Stderr, "Failed to accept connection: %v\n", err)
 			continue
 		}
 		go handleConnection(conn)
